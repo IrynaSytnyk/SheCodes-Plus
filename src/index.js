@@ -35,15 +35,38 @@ function formatDate(responseDate) {
   return currentDate;
 }
 
+function changeWeatherIcon(description) {
+  let icons = {
+    "clear sky": "images/clear-sky.svg",
+    "few clouds": "images/few-clouds.svg",
+    "scattered clouds": "images/scattered-clouds.svg",
+    "broken clouds": "images/broken-clouds.svg",
+    "overcast clouds": "images/broken-clouds.svg",
+    "shower rain": "images/shower-rain.svg",
+    rain: "images/rain.svg",
+    thunderstorm: "images/thunderstorm.svg",
+    snow: "images/snow.svg",
+    mist: "images/mist.svg",
+  };
+
+  document
+    .querySelector("#weather-icon")
+    .setAttribute("src", `${icons[description]}`);
+}
+
 function showCityTemperature(response) {
   let currentTemperature = Math.round(response.data.main.temp);
   document.querySelector("#current-temperature").innerHTML = currentTemperature;
 
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#country-name").innerHTML = response.data.sys.country;
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
   document.querySelector("#current-date").innerHTML = formatDate(
     response.data.dt
   );
+
+  changeWeatherIcon(response.data.weather[0].description);
 }
 
 function searchCity(city) {
