@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(responseDate) {
+  let date = new Date(responseDate * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
 
@@ -21,16 +22,18 @@ function formatDate(date) {
   let month = months[date.getMonth()];
 
   let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
 
   let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
   let currentDate = `${day}, ${dateNumber} ${month} <br /> ${hour}:${minutes}`;
   return currentDate;
 }
-
-let currentDate = formatDate(new Date());
-let date = document.querySelector("#current-date");
-date.innerHTML = currentDate;
 
 function showCityTemperature(response) {
   let currentTemperature = Math.round(response.data.main.temp);
@@ -38,6 +41,9 @@ function showCityTemperature(response) {
 
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#country-name").innerHTML = response.data.sys.country;
+  document.querySelector("#current-date").innerHTML = formatDate(
+    response.data.dt
+  );
 }
 
 function searchCity(city) {
