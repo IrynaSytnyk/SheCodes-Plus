@@ -95,6 +95,8 @@ function showCurrentLocation(event) {
 
 let apiKey = "6c9503a3751381612a45a5c2e886b63d";
 
+searchCity("Kyiv");
+
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", showCurrentLocation);
 

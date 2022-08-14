@@ -33,6 +33,7 @@
                   class="form-control search"
                   placeholder="Find a city"
                   aria-label="Find a city"
+                  autocomplete="off"
                   id="search-city"
                 />
                 <button
@@ -57,16 +58,13 @@
           <div class="row justify-content-between city">
             <div class="col-auto">
               <h1>
-                <span class="capitalize" id="city-name">Kyiv</span>,
-                <span class="country" id="country-name">UA</span>
+                <span class="capitalize" id="city-name"></span>,
+                <span class="country" id="country-name"></span>
               </h1>
             </div>
             <div class="col alight-self-end current-date">
               <p class="last-updated">Last updated</p>
-              <p id="current-date">
-                Sun, 31 Jul <br />
-                21:17
-              </p>
+              <p id="current-date"></p>
             </div>
           </div>
           <div class="row justify-content-between current-weather">
@@ -74,7 +72,7 @@
               <div class="row">
                 <p class="capitalize" id="weather-description">Cloudy</p>
 
-                <h2 id="current-temperature">25</h2>
+                <h2 id="current-temperature"></h2>
 
                 <button class="enabled celcius-button" id="celcius-button">
                   °C
