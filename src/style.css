@@ -144,6 +144,7 @@ body > .container {
   padding: 0;
   height: 31px;
   transition: all 200ms ease-in-out;
+  cursor: default;
 }
 
 .celcius-button {
@@ -162,14 +163,15 @@ body > .container {
   filter: drop-shadow(rgba(0, 0, 0, 0.04) 0px 3px 5px);
 }
 
-.current-weather button:hover {
-  background-color: #00449d;
-  color: #fff;
-}
-
 .current-weather .disabled {
+  cursor: pointer;
   background-color: #fff;
   color: #9e9e9e;
+}
+
+.current-weather .disabled:hover {
+  background-color: #00449d;
+  color: #fff;
 }
 
 .current-weather-buttons {

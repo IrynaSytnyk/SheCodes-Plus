@@ -55,8 +55,8 @@ function changeWeatherIcon(description) {
 }
 
 function showCityTemperature(response) {
-  let currentTemperature = Math.round(response.data.main.temp);
-  document.querySelector("#current-temperature").innerHTML = currentTemperature;
+  celsiusTemperature = Math.round(response.data.main.temp);
+  document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
 
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#country-name").innerHTML = response.data.sys.country;
@@ -93,9 +93,27 @@ function showCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(getGeolocation);
 }
 
-let apiKey = "6c9503a3751381612a45a5c2e886b63d";
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  fahrenheitButton.classList.remove("disabled");
+  celciusButton.classList.add("disabled");
+  let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
+  document.querySelector("#current-temperature").innerHTML = Math.round(
+    fahrenheitTemperature
+  );
+}
 
-searchCity("Kyiv");
+function convertToCelcius(event) {
+  event.preventDefault();
+  celciusButton.classList.remove("disabled");
+  fahrenheitButton.classList.add("disabled");
+  document.querySelector("#current-temperature").innerHTML =
+    Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let apiKey = "6c9503a3751381612a45a5c2e886b63d";
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", showCurrentLocation);
@@ -103,48 +121,10 @@ currentLocationButton.addEventListener("click", showCurrentLocation);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", findCity);
 
-/*
-function clickFahrenheit() {
-  let fahrenheitButton = document.querySelector("#fahrenheit-button");
-  fahrenheitButton.classList.add("enabled");
-  fahrenheitButton.classList.remove("disabled");
-
-  let celciusButton = document.querySelector("#celcius-button");
-  celciusButton.classList.add("disabled");
-  celciusButton.classList.remove("enabled");
-}
-
-function clickCelcius() {
-  let fahrenheitButton = document.querySelector("#fahrenheit-button");
-  fahrenheitButton.classList.add("disabled");
-  fahrenheitButton.classList.remove("enabled");
-
-  let celciusButton = document.querySelector("#celcius-button");
-  celciusButton.classList.add("enabled");
-  celciusButton.classList.remove("disabled");
-}
-
-function convertToFahrenheit(event) {
-  event.preventDefault();
-
-  let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = "71";
-
-  clickFahrenheit();
-}
-
-function convertToCelcius(event) {
-  event.preventDefault();
-
-  let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = "25";
-
-  clickCelcius();
-}
-
 let fahrenheitButton = document.querySelector("#fahrenheit-button");
 fahrenheitButton.addEventListener("click", convertToFahrenheit);
 
 let celciusButton = document.querySelector("#celcius-button");
 celciusButton.addEventListener("click", convertToCelcius);
-*/
+
+searchCity("Kyiv");
