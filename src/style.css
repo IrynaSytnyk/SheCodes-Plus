@@ -24,10 +24,11 @@ body > .container {
 }
 
 .app {
-  background-color: #f0f6ff;
+  background-color: #f2f7ff;
   border: solid 1px rgb(231, 231, 231, 0.7);
   border-radius: 0.375rem;
   padding: 50px 50px 40px 50px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .search-field {
@@ -155,7 +156,7 @@ body > .container {
 }
 
 .cards {
-  background-color: #e7effcef;
+  background-color: #e7effcc1;
   padding: 0;
   border-radius: 00.375rem;
 }
