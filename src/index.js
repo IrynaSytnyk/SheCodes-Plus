@@ -44,6 +44,7 @@ function changeWeatherIcon(description) {
     "overcast clouds": "images/broken-clouds.svg",
     "shower rain": "images/shower-rain.svg",
     rain: "images/rain.svg",
+    "light rain": "images/rain.svg",
     thunderstorm: "images/thunderstorm.svg",
     snow: "images/snow.svg",
     mist: "images/mist.svg",
@@ -62,6 +63,9 @@ function showCityTemperature(response) {
   document.querySelector("#country-name").innerHTML = response.data.sys.country;
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
+  /* clear wind speed */
+  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
+  /* end */
   document.querySelector("#current-date").innerHTML = formatDate(
     response.data.dt
   );

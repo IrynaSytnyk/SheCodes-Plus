@@ -70,8 +70,15 @@
           <div class="row justify-content-between current-weather">
             <div class="col-sm-6 d-flex flex-column align-self-center">
               <div class="row">
-                <p class="capitalize" id="weather-description">Cloudy</p>
-
+                <p
+                  class="capitalize weather-description"
+                  id="weather-description"
+                >
+                  Cloudy
+                </p>
+                <!-- clear wind speed -->
+                <p class="wind">Wind: <span id="wind-speed"></span> km/h</p>
+                <!-- end -->
                 <h2 id="current-temperature"></h2>
 
                 <button class="celcius-button" id="celcius-button">°C</button>
