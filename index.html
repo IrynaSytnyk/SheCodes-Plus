@@ -23,101 +23,112 @@
   </head>
   <body>
     <div class="container">
-      <div class="app">
-        <form id="search-form">
-          <div class="row">
-            <div class="input-group mb-3 search-field col">
-              <input
-                type="text"
-                class="form-control search"
-                placeholder="Find a city"
-                aria-label="Find a city"
-                id="search-city"
-              />
-              <button
-                class="btn search-button"
-                type="submit"
-                id="button-addon2"
-              >
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
-            <div class="col-auto pe-0">
-              <button
-                class="btn current-location"
-                id="current-location"
-                type="button"
-              >
-                Current location
-              </button>
-            </div>
-          </div>
-        </form>
-        <div class="row justify-content-between city">
-          <div class="col-auto">
-            <h1>
-              <span class="capitalize" id="city-name">Kyiv</span>,
-              <span class="country" id="country-name">Ukraine</span>
-            </h1>
-          </div>
-          <div class="col alight-self-end city-date">
-            <p id="current-date">
-              Sunday, 31 Jul <br />
-              21:17
-            </p>
-          </div>
-        </div>
-        <div class="row justify-content-between main-area">
-          <div class="col-sm-6 d-flex flex-column align-self-center">
+      <div class="main">
+        <div class="app">
+          <form id="search-form">
             <div class="row">
-              <div class="col-sm-5">
-                <p>Cloudy</p>
-                <h2 id="current-temperature">25</h2>
-              </div>
-
-              <div class="col main-area-buttons">
-                <button class="enabled" id="celcius-button" disabled>
-                  <span>&#8451;</span>
+              <div class="input-group mb-3 search-field col">
+                <input
+                  type="text"
+                  class="form-control search"
+                  placeholder="Find a city"
+                  aria-label="Find a city"
+                  id="search-city"
+                />
+                <button
+                  class="btn search-button"
+                  type="submit"
+                  id="button-addon2"
+                >
+                  <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                <!--
+              </div>
+              <div class="col-auto pe-0">
+                <button
+                  class="btn current-location"
+                  id="current-location"
+                  type="button"
+                >
+                  Current location
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="row justify-content-between city">
+            <div class="col-auto">
+              <h1>
+                <span class="capitalize" id="city-name">Kyiv</span>,
+                <span class="country" id="country-name">Ukraine</span>
+              </h1>
+            </div>
+            <div class="col alight-self-end city-date">
+              <p id="current-date">
+                Sunday, 31 Jul <br />
+                21:17
+              </p>
+            </div>
+          </div>
+          <div class="row justify-content-between main-area">
+            <div class="col-sm-6 d-flex flex-column align-self-center">
+              <div class="row">
+                <div class="col-sm-5">
+                  <p>Cloudy</p>
+                  <h2 id="current-temperature">25</h2>
+                </div>
+
+                <div class="col main-area-buttons">
+                  <button class="enabled" id="celcius-button" disabled>
+                    <span>&#8451;</span>
+                  </button>
+                  <!--
                 <br /><button class="disabled" id="fahrenheit-button">
                   <span>&#8457;</span>
                 </button>
-              --></div>
+              -->
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <img src="images/cloudy.svg" alt="cloudy" />
+              <!-- <a href='https://www.freepik.com/vectors/rain-icon'>Rain icon vector created by bamdewanto - www.freepik.com</a> -->
             </div>
           </div>
-          <div class="col-sm-6">
-            <img src="images/cloudy.svg" alt="cloudy" />
-            <!-- <a href='https://www.freepik.com/vectors/rain-icon'>Rain icon vector created by bamdewanto - www.freepik.com</a> -->
+          <div class="row cards">
+            <div class="col weather-card">
+              <p>Thu</p>
+              <img src="images/storm.svg" alt="storm" />
+              <p class="card-temperature">26°C</p>
+            </div>
+
+            <div class="col weather-card">
+              <p>Fri</p>
+              <img src="images/rainy.svg" alt="rainy" />
+              <p class="card-temperature">28°C</p>
+            </div>
+            <div class="col weather-card">
+              <p>Sat</p>
+              <img src="images/sunny.svg" alt="sunny" />
+              <p class="card-temperature">30°C</p>
+            </div>
+            <div class="col weather-card">
+              <p>Sun</p>
+              <img src="images/rainy.svg" alt="rainy" />
+              <p class="card-temperature">27°C</p>
+            </div>
+            <div class="col weather-card">
+              <p>Mon</p>
+              <img src="images/light-rain.svg" alt="light-rain" />
+              <p class="card-temperature">24°C</p>
+            </div>
           </div>
         </div>
-        <div class="row cards">
-          <div class="col weather-card">
-            <p>Thu</p>
-            <img src="images/storm.svg" alt="storm" />
-            <p class="card-temperature">26°C</p>
-          </div>
-
-          <div class="col weather-card">
-            <p>Fri</p>
-            <img src="images/rainy.svg" alt="rainy" />
-            <p class="card-temperature">28°C</p>
-          </div>
-          <div class="col weather-card">
-            <p>Sat</p>
-            <img src="images/sunny.svg" alt="sunny" />
-            <p class="card-temperature">30°C</p>
-          </div>
-          <div class="col weather-card">
-            <p>Sun</p>
-            <img src="images/rainy.svg" alt="rainy" />
-            <p class="card-temperature">27°C</p>
-          </div>
-          <div class="col weather-card">
-            <p>Mon</p>
-            <img src="images/light-rain.svg" alt="light-rain" />
-            <p class="card-temperature">24°C</p>
-          </div>
+        <div class="author">
+          <p>
+            <a href="https://github.com/IrynaSytnyk/Weather-App" target="_blank"
+              >Open-source code</a
+            >
+            by Iryna Sytnyk
+          </p>
         </div>
       </div>
     </div>

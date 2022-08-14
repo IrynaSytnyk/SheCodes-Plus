@@ -194,6 +194,14 @@ body > .container {
   color: #fff;
 }
 
+.author {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  padding-top: 10px;
+}
+
 .capitalize {
   text-transform: capitalize;
 }
