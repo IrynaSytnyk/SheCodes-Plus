@@ -72,30 +72,28 @@
           <div class="row justify-content-between current-weather">
             <div class="col-sm-6 d-flex flex-column align-self-center">
               <div class="row">
-                <div class="col-sm-5">
-                  <p class="capitalize" id="weather-description">Cloudy</p>
-                  <h2 id="current-temperature">25</h2>
-                </div>
+                <p class="capitalize" id="weather-description">Cloudy</p>
 
-                <div class="col current-weather-buttons">
-                  <button class="enabled" id="celcius-button" disabled>
-                    <span>&#8451;</span>
-                  </button>
-                  <!--
-                <br /><button class="disabled" id="fahrenheit-button">
-                  <span>&#8457;</span>
+                <h2 id="current-temperature">25</h2>
+
+                <button class="enabled celcius-button" id="celcius-button">
+                  °C
                 </button>
-              -->
-                </div>
+
+                <br /><button
+                  class="disabled fahrenheit-button"
+                  id="fahrenheit-button"
+                >
+                  °F
+                </button>
               </div>
             </div>
             <div class="col-sm-6">
               <img
                 src="images/broken-clouds.svg"
-                alt="cloudy"
+                alt="current weather icon"
                 id="weather-icon"
               />
-              <!-- <a href='https://www.freepik.com/vectors/rain-icon'>Rain icon vector created by bamdewanto - www.freepik.com</a> -->
             </div>
           </div>
           <!--
