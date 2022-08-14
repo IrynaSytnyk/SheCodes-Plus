@@ -35,24 +35,23 @@ function formatDate(responseDate) {
   return currentDate;
 }
 
-function changeWeatherIcon(description) {
+function changeWeatherIcon(icon) {
+  iconNumber = icon.slice(0, 2);
   let icons = {
-    "clear sky": "images/clear-sky.svg",
-    "few clouds": "images/few-clouds.svg",
-    "scattered clouds": "images/scattered-clouds.svg",
-    "broken clouds": "images/broken-clouds.svg",
-    "overcast clouds": "images/broken-clouds.svg",
-    "shower rain": "images/shower-rain.svg",
-    rain: "images/rain.svg",
-    "light rain": "images/rain.svg",
-    thunderstorm: "images/thunderstorm.svg",
-    snow: "images/snow.svg",
-    mist: "images/mist.svg",
+    "01": "images/clear-sky.svg",
+    "02": "images/few-clouds.svg",
+    "03": "images/scattered-clouds.svg",
+    "04": "images/broken-clouds.svg",
+    "09": "images/shower-rain.svg",
+    10: "images/rain.svg",
+    11: "images/thunderstorm.svg",
+    13: "images/snow.svg",
+    50: "images/mist.svg",
   };
 
   document
     .querySelector("#weather-icon")
-    .setAttribute("src", `${icons[description]}`);
+    .setAttribute("src", `${icons[iconNumber]}`);
 }
 
 function showCityTemperature(response) {
@@ -70,7 +69,7 @@ function showCityTemperature(response) {
     response.data.dt
   );
 
-  changeWeatherIcon(response.data.weather[0].description);
+  changeWeatherIcon(response.data.weather[0].icon);
 }
 
 function searchCity(city) {
