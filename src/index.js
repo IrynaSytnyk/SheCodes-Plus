@@ -73,6 +73,11 @@ function changeWeatherIcon(icon) {
     .setAttribute("src", `${icons[iconNumber]}`);
 }
 
+function getForecast(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+}
+
 function showCityTemperature(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
   document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
@@ -89,6 +94,8 @@ function showCityTemperature(response) {
   );
 
   changeWeatherIcon(response.data.weather[0].icon);
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
