@@ -86,14 +86,13 @@ function changeWeatherIcon(icon) {
 }
 
 function getForecast(coordinates) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
   if (fahrenheitButton.classList.contains("disabled")) {
     apiUrl = apiUrl + `&units=metric`;
   } else {
     apiUrl = apiUrl + `&units=imperial`;
   }
 
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
