@@ -58,9 +58,9 @@ function displayForecast(response) {
               <img src="${changeWeatherIcon(
                 forecastDay.weather[0].icon
               )}" alt="storm" id="card-weather-icon"/>
-              <p class="card-temperature">${Math.round(
+              <p class="card-temperature"><span class="card-temperature-number" id="card-temperature-number">${Math.round(
                 forecastDay.temp.day
-              )}°</p>
+              )}</span>°</p>
             </div>`;
     }
   });
@@ -87,6 +87,13 @@ function changeWeatherIcon(icon) {
 
 function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  if (fahrenheitButton.classList.contains("disabled")) {
+    apiUrl = apiUrl + `&units=metric`;
+  } else {
+    apiUrl = apiUrl + `&units=imperial`;
+  }
+
+  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -111,8 +118,8 @@ function showCityTemperature(response) {
   getForecast(response.data.coord);
 }
 
-function searchCity(city) {
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function searchCity(city, units) {
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(url).then(showCityTemperature);
 }
 
@@ -120,7 +127,7 @@ function findCity(event) {
   event.preventDefault();
 
   let city = document.querySelector("#search-city");
-  searchCity(city.value);
+  searchCity(city.value, "metric");
 
   event.target.reset();
 }
@@ -139,18 +146,24 @@ function convertToFahrenheit(event) {
   event.preventDefault();
   fahrenheitButton.classList.remove("disabled");
   celciusButton.classList.add("disabled");
-  let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
-  document.querySelector("#current-temperature").innerHTML = Math.round(
-    fahrenheitTemperature
-  );
+
+  document.querySelector("#wind-units").innerHTML = "mph";
+
+  let city = document.querySelector("#city-name");
+  city = city.textContent || city.innerText;
+  searchCity(city, "imperial");
 }
 
 function convertToCelcius(event) {
   event.preventDefault();
   celciusButton.classList.remove("disabled");
   fahrenheitButton.classList.add("disabled");
-  document.querySelector("#current-temperature").innerHTML =
-    Math.round(celsiusTemperature);
+
+  document.querySelector("#wind-units").innerHTML = "m/s";
+
+  let city = document.querySelector("#city-name");
+  city = city.textContent || city.innerText;
+  searchCity(city, "metric");
 }
 
 let celsiusTemperature = null;
@@ -169,4 +182,4 @@ fahrenheitButton.addEventListener("click", convertToFahrenheit);
 let celciusButton = document.querySelector("#celcius-button");
 celciusButton.addEventListener("click", convertToCelcius);
 
-searchCity("Kyiv");
+searchCity("Kyiv", "metric");
