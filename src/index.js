@@ -35,20 +35,34 @@ function formatDate(responseDate) {
   return currentDate;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecastData = response.data.daily;
+
   let forecast = document.querySelector("#forecast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-
   let forecastHTML = `<div class="row cards">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col weather-card">
-              <p>${day}</p>
-              <img src="images/rain.svg" alt="storm" />
-              <p class="card-temperature">28°</p>
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col weather-card">
+              <p>${formatDay(forecastDay.dt)}</p>
+              <img src="${changeWeatherIcon(
+                forecastDay.weather[0].icon
+              )}" alt="storm" id="card-weather-icon"/>
+              <p class="card-temperature">${Math.round(
+                forecastDay.temp.day
+              )}°</p>
             </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
@@ -68,14 +82,12 @@ function changeWeatherIcon(icon) {
     50: "images/mist.svg",
   };
 
-  document
-    .querySelector("#weather-icon")
-    .setAttribute("src", `${icons[iconNumber]}`);
+  return icons[iconNumber];
 }
 
 function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showCityTemperature(response) {
@@ -92,8 +104,9 @@ function showCityTemperature(response) {
   document.querySelector("#current-date").innerHTML = formatDate(
     response.data.dt
   );
-
-  changeWeatherIcon(response.data.weather[0].icon);
+  document
+    .querySelector("#weather-icon")
+    .setAttribute("src", `${changeWeatherIcon(response.data.weather[0].icon)}`);
 
   getForecast(response.data.coord);
 }
@@ -157,4 +170,3 @@ let celciusButton = document.querySelector("#celcius-button");
 celciusButton.addEventListener("click", convertToCelcius);
 
 searchCity("Kyiv");
-displayForecast();
