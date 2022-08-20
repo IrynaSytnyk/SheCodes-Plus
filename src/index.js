@@ -35,6 +35,25 @@ function formatDate(responseDate) {
   return currentDate;
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = `<div class="row cards">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col weather-card">
+              <p>${day}</p>
+              <img src="images/rain.svg" alt="storm" />
+              <p class="card-temperature">28°</p>
+            </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
 function changeWeatherIcon(icon) {
   iconNumber = icon.slice(0, 2);
   let icons = {
@@ -131,3 +150,4 @@ let celciusButton = document.querySelector("#celcius-button");
 celciusButton.addEventListener("click", convertToCelcius);
 
 searchCity("Kyiv");
+displayForecast();
