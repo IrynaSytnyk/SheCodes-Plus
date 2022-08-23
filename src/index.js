@@ -126,7 +126,11 @@ function findCity(event) {
   event.preventDefault();
 
   let city = document.querySelector("#search-city");
-  searchCity(city.value, "metric");
+  if (fahrenheitButton.classList.contains("disabled")) {
+    searchCity(city.value, "metric");
+  } else {
+    searchCity(city.value, "imperial");
+  }
 
   event.target.reset();
 }
